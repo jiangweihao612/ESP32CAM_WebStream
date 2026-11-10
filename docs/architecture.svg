@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="Segoe UI, Microsoft YaHei, PingFang SC, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f6bff"/>
+    </marker>
+    <marker id="ar-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8891a"/>
+    </marker>
+    <marker id="ar-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b95a5"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="520" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1f2329">ESP32-CAM 图传监控 · 系统架构</text>
+  <text x="40" y="68" font-size="12.5" fill="#6b7280">80 端口管控制、81 端口推流，两条通道互不阻塞</text>
+
+  <!-- 客户端分组 -->
+  <rect x="28" y="96" width="218" height="308" rx="12" fill="#fafbfc" stroke="#d8dee8" stroke-dasharray="4 4"/>
+  <text x="44" y="118" font-size="11" fill="#8b95a5" letter-spacing="1">客户端</text>
+
+  <rect x="42" y="130" width="190" height="104" rx="10" fill="#ffffff" stroke="#e3e7ee"/>
+  <text x="58" y="156" font-size="15" font-weight="700" fill="#1f2329">浏览器</text>
+  <text x="58" y="180" font-size="11" fill="#8b95a5">电脑 · 网页端</text>
+  <text x="58" y="202" font-size="11.5" fill="#4b5563">MJPEG 预览</text>
+  <text x="58" y="220" font-size="11.5" fill="#4b5563">控制 / 文件管理</text>
+
+  <rect x="42" y="282" width="190" height="104" rx="10" fill="#ffffff" stroke="#e3e7ee"/>
+  <text x="58" y="308" font-size="15" font-weight="700" fill="#1f2329">微信小程序</text>
+  <text x="58" y="332" font-size="11" fill="#8b95a5">手机 · 三个 Tab</text>
+  <text x="58" y="354" font-size="11.5" fill="#4b5563">取帧转 base64</text>
+  <text x="58" y="372" font-size="11.5" fill="#4b5563">控制 / 文件管理</text>
+
+  <!-- ESP32 主体 -->
+  <rect x="308" y="96" width="252" height="308" rx="12" fill="#f6f9ff" stroke="#c9d8f8"/>
+  <text x="324" y="120" font-size="14" font-weight="700" fill="#1f2329">ESP32-CAM</text>
+  <text x="324" y="136" font-size="10.5" fill="#8b95a5">AI-Thinker · STA + AP 双模</text>
+
+  <rect x="324" y="146" width="220" height="72" rx="8" fill="#ffffff" stroke="#c9d8f8"/>
+  <text x="338" y="170" font-size="12.5" font-weight="700" fill="#2f6bff">WebServer · :80</text>
+  <text x="338" y="190" font-size="10.5" fill="#6b7280">网页 / 控制 / 文件 / 抓拍</text>
+  <text x="338" y="206" font-size="10.5" fill="#6b7280">同步阻塞，只负责任务调度</text>
+
+  <rect x="324" y="230" width="220" height="72" rx="8" fill="#ffffff" stroke="#f2d3a8"/>
+  <text x="338" y="254" font-size="12.5" font-weight="700" fill="#e8891a">WiFiServer · :81</text>
+  <text x="338" y="274" font-size="10.5" fill="#6b7280">MJPEG 流，每轮 loop 发一帧</text>
+  <text x="338" y="290" font-size="10.5" fill="#6b7280">独立端口，不抢控制通道</text>
+
+  <rect x="324" y="314" width="220" height="72" rx="8" fill="#ffffff" stroke="#e3e7ee"/>
+  <text x="338" y="338" font-size="12.5" font-weight="700" fill="#4b5563">loop() 主循环</text>
+  <text x="338" y="358" font-size="10.5" fill="#6b7280">handleClient · streamTick</text>
+  <text x="338" y="374" font-size="10.5" fill="#6b7280">recTick（录制写卡）</text>
+
+  <!-- 外设 -->
+  <rect x="626" y="96" width="246" height="308" rx="12" fill="#fafbfc" stroke="#d8dee8" stroke-dasharray="4 4"/>
+  <text x="642" y="118" font-size="11" fill="#8b95a5" letter-spacing="1">外设</text>
+
+  <rect x="642" y="132" width="214" height="94" rx="10" fill="#ffffff" stroke="#e3e7ee"/>
+  <text x="658" y="158" font-size="14" font-weight="700" fill="#1f2329">OV2640</text>
+  <text x="658" y="180" font-size="11" fill="#8b95a5">200 万像素</text>
+  <text x="658" y="200" font-size="11.5" fill="#4b5563">JPEG 硬件编码</text>
+  <text x="658" y="216" font-size="11.5" fill="#4b5563">8 档分辨率可切</text>
+
+  <rect x="642" y="248" width="214" height="94" rx="10" fill="#ffffff" stroke="#e3e7ee"/>
+  <text x="658" y="274" font-size="14" font-weight="700" fill="#1f2329">MicroSD</text>
+  <text x="658" y="296" font-size="11" fill="#8b95a5">1-bit SDMMC</text>
+  <text x="658" y="316" font-size="11.5" fill="#4b5563">照片 / AVI 录像</text>
+  <text x="658" y="332" font-size="11.5" fill="#4b5563">文件管理读写</text>
+
+  <!-- 连线 -->
+  <!-- 浏览器 -> WebServer :80（请求） -->
+  <line x1="234" y1="170" x2="318" y2="170" stroke="#2f6bff" stroke-width="1.8" marker-end="url(#ar-b)"/>
+  <text x="240" y="162" font-size="10" fill="#2f6bff">HTTP</text>
+
+  <!-- WiFiServer :81 -> 浏览器（视频流下发，方向相反） -->
+  <path d="M 322 262 L 290 262 L 290 214 L 236 214" fill="none" stroke="#e8891a" stroke-width="1.8" marker-end="url(#ar-o)"/>
+  <text x="248" y="280" font-size="10" fill="#e8891a">MJPEG</text>
+
+  <!-- 小程序 -> WebServer :80（逐帧取 JPEG） -->
+  <path d="M 232 322 L 306 322 L 306 190 L 318 190" fill="none" stroke="#2f6bff" stroke-width="1.8" marker-end="url(#ar-b)"/>
+  <text x="238" y="338" font-size="10" fill="#2f6bff">取帧</text>
+
+  <!-- 内部外设 -->
+  <line x1="544" y1="172" x2="636" y2="172" stroke="#8b95a5" stroke-width="1.5" marker-end="url(#ar-g)"/>
+  <path d="M 544 202 L 600 202 L 600 300 L 636 300" fill="none" stroke="#8b95a5" stroke-width="1.5" marker-end="url(#ar-g)"/>
+
+  <!-- 图例 -->
+  <rect x="28" y="428" width="844" height="66" rx="10" fill="#f8fafc" stroke="#e8ecf3"/>
+  <line x1="48" y1="452" x2="78" y2="452" stroke="#2f6bff" stroke-width="1.8"/>
+  <text x="88" y="456" font-size="11.5" fill="#4b5563">控制 / 文件 / 取帧（:80）</text>
+  <line x1="300" y1="452" x2="330" y2="452" stroke="#e8891a" stroke-width="1.8"/>
+  <text x="340" y="456" font-size="11.5" fill="#4b5563">MJPEG 视频流（:81）</text>
+  <line x1="520" y1="452" x2="550" y2="452" stroke="#8b95a5" stroke-width="1.5"/>
+  <text x="560" y="456" font-size="11.5" fill="#4b5563">驱动内部外设</text>
+  <text x="48" y="480" font-size="11" fill="#8b95a5">浏览器直连 81 端口拉流；小程序不支持 multipart，改为 80 端口逐帧取 JPEG</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330" font-family="Segoe UI, Microsoft YaHei, PingFang SC, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="330" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1f2329">AVI (MJPG) 文件结构</text>
+  <text x="40" y="68" font-size="12.5" fill="#6b7280">录制时顺序追加，停止时回填长度并补索引 —— 生成的文件 VLC / PotPlayer / ffmpeg 可直接播放</text>
+
+  <!-- 块序列 -->
+  <rect x="40" y="96" width="112" height="56" rx="6" fill="#eef3ff" stroke="#b9cdf7"/>
+  <text x="96" y="120" font-size="11.5" font-weight="700" fill="#2f5fcc" text-anchor="middle">RIFF · AVI</text>
+  <text x="96" y="138" font-size="10" fill="#6b7280" text-anchor="middle">文件头</text>
+
+  <rect x="158" y="96" width="176" height="56" rx="6" fill="#eef3ff" stroke="#b9cdf7"/>
+  <text x="246" y="120" font-size="11.5" font-weight="700" fill="#2f5fcc" text-anchor="middle">hdrl</text>
+  <text x="246" y="138" font-size="10" fill="#6b7280" text-anchor="middle">avih + strl(strh, strf)</text>
+
+  <rect x="340" y="96" width="326" height="56" rx="6" fill="#fff5e8" stroke="#f0cb95"/>
+  <text x="503" y="118" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="middle">LIST movi</text>
+  <text x="503" y="136" font-size="10" fill="#6b7280" text-anchor="middle">00dc 帧块 × N，每帧一个 JPEG</text>
+
+  <rect x="672" y="96" width="158" height="56" rx="6" fill="#eaf7f0" stroke="#a9dcc3"/>
+  <text x="751" y="120" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle">idx1</text>
+  <text x="751" y="138" font-size="10" fill="#6b7280" text-anchor="middle">帧索引，每帧 16 字节</text>
+
+  <!-- movi 内部帧块 -->
+  <g>
+    <rect x="352" y="166" width="62" height="26" rx="4" fill="#ffffff" stroke="#f0cb95"/>
+    <text x="383" y="184" font-size="10" fill="#b45309" text-anchor="middle">00dc</text>
+    <rect x="422" y="166" width="62" height="26" rx="4" fill="#ffffff" stroke="#f0cb95"/>
+    <text x="453" y="184" font-size="10" fill="#b45309" text-anchor="middle">00dc</text>
+    <rect x="492" y="166" width="62" height="26" rx="4" fill="#ffffff" stroke="#f0cb95"/>
+    <text x="523" y="184" font-size="10" fill="#b45309" text-anchor="middle">00dc</text>
+    <text x="570" y="184" font-size="12" fill="#9aa3b2">……</text>
+    <rect x="592" y="166" width="62" height="26" rx="4" fill="#ffffff" stroke="#f0cb95"/>
+    <text x="623" y="184" font-size="10" fill="#b45309" text-anchor="middle">00dc</text>
+    <path d="M 383 158 L 383 148" stroke="#f0cb95" stroke-width="1.2"/>
+  </g>
+
+  <!-- 回填说明 -->
+  <path d="M 751 214 L 751 236" stroke="#b45309" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="751" y="256" font-size="10.5" fill="#8b95a5" text-anchor="middle">停止录制时才写入</text>
+
+  <path d="M 96 214 L 96 236" stroke="#b45309" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="96" y="256" font-size="10.5" fill="#8b95a5" text-anchor="middle">回填总长度</text>
+
+  <path d="M 246 214 L 246 236" stroke="#b45309" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="246" y="256" font-size="10.5" fill="#8b95a5" text-anchor="middle">回填总帧数</text>
+
+  <path d="M 503 214 L 503 236" stroke="#b45309" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="503" y="256" font-size="10.5" fill="#8b95a5" text-anchor="middle">回填 movi 长度</text>
+
+  <!-- 底部备注 -->
+  <rect x="40" y="276" width="790" height="34" rx="8" fill="#f8fafc" stroke="#e8ecf3"/>
+  <text x="54" y="298" font-size="11" fill="#6b7280">帧索引存在 PSRAM（每帧 8 字节，最多 4096 帧），避免频繁写卡拖慢录制；idx1 的偏移基准取 220，与 ffmpeg 的 movi 解析约定一致</text>
+</svg>

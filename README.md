@@ -6,6 +6,8 @@
 - 小程序功能与网页端对齐，手机上随时查看和操作
 - 两者共用同一块板子、同一套 HTTP 接口，控制项双向同步
 
+![系统架构](docs/architecture.svg)
+
 ## 功能
 
 **实时画面**
@@ -116,6 +118,8 @@ ESP32 自带的 `WebServer` 是同步阻塞的。如果用它推 MJPEG 流，一
 **AVI 封装**
 
 标准 MJPG + AVI：`RIFF/AVI → hdrl → avih → strl → strh/strf → movi → idx1`。帧索引存在 PSRAM 里，停止录制时回填 RIFF 长度、总帧数、movi 长度，再追加 `idx1`。索引偏移基准取 220（`movi` fourcc 位置），与 ffmpeg 的解析约定一致。
+
+![AVI 文件结构](docs/avi-structure.svg)
 
 **小程序为什么不用 MJPEG 流**
 
