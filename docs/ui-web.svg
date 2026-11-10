@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="900" height="680" font-family="Segoe UI, Microsoft YaHei, PingFang SC, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="g-logo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <radialGradient id="g-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0e3b49" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#05090d" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="clip-win">
+      <rect x="30" y="84" width="840" height="560" rx="12"/>
+    </clipPath>
+  </defs>
+
+  <rect width="900" height="680" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1f2329">网页端 · 实时画面</text>
+  <text x="40" y="66" font-size="12.5" fill="#6b7280">固件内置的网页，浏览器打开设备地址即可使用，无需安装任何客户端</text>
+
+  <g clip-path="url(#clip-win)">
+    <rect x="30" y="84" width="840" height="560" fill="#0b1016"/>
+
+    <!-- 浏览器工具条 -->
+    <rect x="30" y="84" width="840" height="38" fill="#131c26"/>
+    <circle cx="52" cy="103" r="4" fill="#ff5f57"/>
+    <circle cx="66" cy="103" r="4" fill="#febc2e"/>
+    <circle cx="80" cy="103" r="4" fill="#28c840"/>
+    <rect x="110" y="94" width="250" height="18" rx="9" fill="#0b1016" stroke="#22303d"/>
+    <text x="122" y="107" font-size="10" fill="#7f95ab">192.168.4.1</text>
+    <text x="852" y="107" font-size="9.5" fill="#4a6072" text-anchor="end">ESP32-CAM</text>
+
+    <!-- 标题栏 -->
+    <rect x="46" y="136" width="32" height="32" rx="9" fill="url(#g-logo)"/>
+    <text x="62" y="157" font-size="8.5" font-weight="700" fill="#04121a" text-anchor="middle">CAM</text>
+    <text x="90" y="152" font-size="15" font-weight="700" fill="#e7f1f9">ESP32-CAM 图传</text>
+    <text x="90" y="170" font-size="10.5" fill="#7f95ab"><tspan fill="#3ddc97">●</tspan> 在线 · 192.168.4.1 · 信号 -42 dBm · 12.4 fps</text>
+
+    <!-- 标签页 -->
+    <text x="46" y="202" font-size="11.5" font-weight="700" fill="#22d3ee">实时画面</text>
+    <text x="112" y="202" font-size="11.5" fill="#7f95ab">文件管理</text>
+    <rect x="46" y="210" width="48" height="2" rx="1" fill="#22d3ee"/>
+    <line x1="30" y1="214" x2="870" y2="214" stroke="#1c2a36" stroke-width="1"/>
+
+    <!-- 画面区 -->
+    <rect x="46" y="226" width="506" height="404" rx="10" fill="#05090d" stroke="#1b2733"/>
+    <ellipse cx="299" cy="424" rx="196" ry="136" fill="url(#g-glow)"/>
+
+    <rect x="270" y="400" width="58" height="42" rx="8" fill="none" stroke="#1e4553" stroke-width="1.6"/>
+    <rect x="288" y="393" width="22" height="9" rx="3" fill="none" stroke="#1e4553" stroke-width="1.6"/>
+    <circle cx="299" cy="421" r="11" fill="none" stroke="#22d3ee" stroke-width="1.6" opacity="0.55"/>
+    <circle cx="295" cy="417" r="2.5" fill="#22d3ee" opacity="0.4"/>
+    <text x="299" y="472" font-size="10" fill="#3f5567" text-anchor="middle">MJPEG 实时流</text>
+    <text x="299" y="488" font-size="9" fill="#2f4353" text-anchor="middle">800 × 600</text>
+
+    <rect x="58" y="240" width="76" height="20" rx="10" fill="#0f1a22" stroke="#1f3a45"/>
+    <circle cx="68" cy="250" r="3" fill="#3ddc97"/>
+    <text x="76" y="253.5" font-size="9.5" fill="#3ddc97">12.4 fps</text>
+
+    <rect x="444" y="240" width="98" height="20" rx="10" fill="#1a1012" stroke="#4a2226"/>
+    <circle cx="455" cy="250" r="3.5" fill="#f87171"/>
+    <text x="463" y="253.5" font-size="9.5" fill="#f87171">录制中 00:07</text>
+
+    <text x="60" y="616" font-size="9" fill="#4d6679">MJPEG · 延迟 42ms · STA 已连接</text>
+
+    <!-- 设备状态 -->
+    <rect x="566" y="226" width="288" height="102" rx="8" fill="#0f1821" stroke="#1b2733"/>
+    <text x="580" y="245" font-size="9.5" font-weight="700" fill="#8fa6b8" letter-spacing="0.6">设备状态</text>
+    <text x="580" y="261" font-size="9.5" fill="#7f95ab">当前地址</text>
+    <text x="840" y="261" font-size="9.5" fill="#dbe7f1" text-anchor="end">192.168.4.1</text>
+    <text x="580" y="275" font-size="9.5" fill="#7f95ab">信号强度</text>
+    <text x="840" y="275" font-size="9.5" fill="#dbe7f1" text-anchor="end">-42 dBm</text>
+    <text x="580" y="289" font-size="9.5" fill="#7f95ab">实时帧率</text>
+    <text x="840" y="289" font-size="9.5" fill="#3ddc97" text-anchor="end">12.4 fps</text>
+    <text x="580" y="303" font-size="9.5" fill="#7f95ab">可用内存</text>
+    <text x="840" y="303" font-size="9.5" fill="#dbe7f1" text-anchor="end">182 KB</text>
+    <text x="580" y="317" font-size="9.5" fill="#7f95ab">SD 卡</text>
+    <text x="840" y="317" font-size="9.5" fill="#dbe7f1" text-anchor="end">936 MB 可用</text>
+
+    <!-- 画面设置 -->
+    <rect x="566" y="336" width="288" height="102" rx="8" fill="#0f1821" stroke="#1b2733"/>
+    <text x="580" y="355" font-size="9.5" font-weight="700" fill="#8fa6b8" letter-spacing="0.6">画面设置</text>
+    <rect x="580" y="362" width="260" height="20" rx="5" fill="#0b141c" stroke="#22303d"/>
+    <text x="590" y="375.5" font-size="9.5" fill="#dbe7f1">800 × 600</text>
+    <path d="M 826 369 L 831 374 L 826 379" fill="none" stroke="#5d7284" stroke-width="1.4" stroke-linecap="round"/>
+
+    <text x="580" y="394" font-size="9.5" fill="#7f95ab">画质</text>
+    <text x="668" y="394" font-size="9.5" font-weight="700" fill="#dbe7f1" text-anchor="end">12</text>
+    <rect x="680" y="390" width="160" height="3" rx="1.5" fill="#22303d"/>
+    <rect x="680" y="390" width="28" height="3" rx="1.5" fill="#22d3ee"/>
+    <circle cx="708" cy="391.5" r="4.5" fill="#22d3ee"/>
+
+    <text x="580" y="412" font-size="9.5" fill="#7f95ab">亮度</text>
+    <text x="668" y="412" font-size="9.5" font-weight="700" fill="#dbe7f1" text-anchor="end">0</text>
+    <rect x="680" y="408" width="160" height="3" rx="1.5" fill="#22303d"/>
+    <rect x="680" y="408" width="80" height="3" rx="1.5" fill="#22d3ee"/>
+    <circle cx="760" cy="409.5" r="4.5" fill="#22d3ee"/>
+
+    <text x="580" y="430" font-size="9.5" fill="#7f95ab">对比度</text>
+    <text x="668" y="430" font-size="9.5" font-weight="700" fill="#dbe7f1" text-anchor="end">0</text>
+    <rect x="680" y="426" width="160" height="3" rx="1.5" fill="#22303d"/>
+    <rect x="680" y="426" width="80" height="3" rx="1.5" fill="#22d3ee"/>
+    <circle cx="760" cy="427.5" r="4.5" fill="#22d3ee"/>
+
+    <!-- 录制 -->
+    <rect x="566" y="446" width="288" height="78" rx="8" fill="#0f1821" stroke="#1b2733"/>
+    <text x="580" y="465" font-size="9.5" font-weight="700" fill="#8fa6b8" letter-spacing="0.6">录制</text>
+    <rect x="580" y="472" width="170" height="20" rx="5" fill="#0b141c" stroke="#22303d"/>
+    <text x="590" y="485.5" font-size="9.5" fill="#dbe7f1">10 fps（推荐）</text>
+    <path d="M 736 479 L 741 484 L 736 489" fill="none" stroke="#5d7284" stroke-width="1.4" stroke-linecap="round"/>
+    <rect x="760" y="472" width="80" height="20" rx="10" fill="#2a1416" stroke="#6d2a2a"/>
+    <text x="800" y="485.5" font-size="9" fill="#f87171" text-anchor="middle">开始录制</text>
+
+    <!-- 快捷操作 -->
+    <rect x="566" y="532" width="288" height="88" rx="8" fill="#0f1821" stroke="#1b2733"/>
+    <text x="580" y="551" font-size="9.5" font-weight="700" fill="#8fa6b8" letter-spacing="0.6">快捷操作</text>
+    <rect x="580" y="558" width="124" height="20" rx="5" fill="#0d1620" stroke="#22303d"/>
+    <text x="642" y="571.5" font-size="9" fill="#b8c7d4" text-anchor="middle">水平镜像</text>
+    <rect x="716" y="558" width="124" height="20" rx="5" fill="#0d1620" stroke="#22303d"/>
+    <text x="778" y="571.5" font-size="9" fill="#b8c7d4" text-anchor="middle">垂直翻转</text>
+    <rect x="580" y="584" width="124" height="20" rx="5" fill="#0d1620" stroke="#22303d"/>
+    <text x="642" y="597.5" font-size="9" fill="#b8c7d4" text-anchor="middle">补光灯</text>
+    <rect x="716" y="584" width="124" height="20" rx="5" fill="#0e2f3a" stroke="#1f6f86"/>
+    <text x="778" y="597.5" font-size="9" fill="#22d3ee" text-anchor="middle">抓拍并下载</text>
+  </g>
+
+  <text x="30" y="666" font-size="10.5" fill="#8b95a5">深色主题 · 桌面与移动端自适应 · 每秒轮询设备状态，与小程序双向同步</text>
+</svg>
