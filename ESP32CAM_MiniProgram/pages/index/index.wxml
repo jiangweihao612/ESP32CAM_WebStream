@@ -1,0 +1,127 @@
+<view class="page">
+    <view class="devbar">
+        <view class="dev-dot {{connOk ? 'on' : 'off'}}"></view>
+        <input
+            class="dev-input"
+            value="{{host}}"
+            placeholder="设备 IP，如 192.168.4.1"
+            placeholder-class="dev-ph"
+            confirm-type="done"
+            bindinput="onHostInput"
+            bindconfirm="onHostConfirm"
+            bindblur="onHostConfirm"
+        />
+        <text class="dev-state">{{connText}}</text>
+    </view>
+
+    <view class="stage">
+        <block wx:if="{{recOn}}">
+            <view class="stage-mask overlay">
+                <view class="rec-dot big"></view>
+                <text class="mask-title">录制中</text>
+                <text class="mask-sub">{{recTimeText}} · {{recFrames}} 帧</text>
+                <text class="mask-tip">预览已暂停，保证录制帧率</text>
+            </view>
+        </block>
+
+        <block wx:else>
+            <image
+                wx:if="{{frameUrl}}"
+                class="frame"
+                src="{{frameUrl}}"
+                mode="aspectFit"
+                bindload="onFrameLoad"
+                binderror="onFrameError"
+            ></image>
+
+            <view class="stage-mask overlay" wx:if="{{viewState === 'error'}}">
+                <text class="mask-title">无法连接设备</text>
+                <text class="mask-sub">当前地址</text>
+                <text class="mask-sub mask-ip">{{host}}</text>
+                <text class="mask-tip">确认电脑 / 手机与 ESP32-CAM 在同一网络</text>
+                <text class="mask-tip mask-err" wx:if="{{errMsg}}">{{errMsg}}</text>
+                <view class="mask-actions">
+                    <button class="mask-btn ghost" bindtap="editHost">修改地址</button>
+                    <button class="mask-btn" bindtap="retry">重 试</button>
+                </view>
+            </view>
+
+            <view class="stage-mask overlay" wx:elif="{{viewState !== 'ready'}}">
+                <view class="spinner"></view>
+                <text class="mask-sub">正在连接设备…</text>
+            </view>
+
+            <view class="live-badge" wx:if="{{viewState === 'ready'}}">
+                <view class="live-dot"></view>
+                <text>{{fpsText}} fps</text>
+            </view>
+        </block>
+    </view>
+
+    <view class="actions">
+        <view class="action" bindtap="capture" hover-class="action-hover">
+            <text class="action-title">抓拍</text>
+            <text class="action-sub">存到相册</text>
+        </view>
+        <view class="action" bindtap="saveSd" hover-class="action-hover">
+            <text class="action-title">存 SD 卡</text>
+            <text class="action-sub">设备端保存</text>
+        </view>
+        <view class="action {{recOn ? 'danger' : 'primary'}}" bindtap="toggleRec" hover-class="action-hover">
+            <text class="action-title">{{recOn ? '停止录制' : '开始录制'}}</text>
+            <text class="action-sub">{{recOn ? '保存 AVI' : '写入 SD 卡'}}</text>
+        </view>
+    </view>
+
+    <view class="card">
+        <view class="row">
+            <text class="card-title inline">录制帧率</text>
+            <picker
+                mode="selector"
+                range="{{fpsLabels}}"
+                value="{{fpsIndex}}"
+                bindchange="onFpsChange"
+                disabled="{{recOn}}"
+            >
+                <view class="picker {{recOn ? 'disabled' : ''}}">{{fpsLabel}}</view>
+            </picker>
+        </view>
+        <text class="hint">录制时预览会暂停，避免与录制抢帧；长时间录制建议先在「调节」里降到 VGA。</text>
+    </view>
+
+    <view class="card">
+        <text class="card-title">设备状态</text>
+        <view class="kv">
+            <text class="k">当前分辨率</text>
+            <text class="v">{{fsText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">AP 热点</text>
+            <text class="v">{{apText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">路由器</text>
+            <text class="v">{{staText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">信号强度</text>
+            <text class="v">{{rssiText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">SD 卡</text>
+            <text class="v">{{sdText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">可用内存</text>
+            <text class="v">{{heapText}}</text>
+        </view>
+        <view class="kv">
+            <text class="k">已运行</text>
+            <text class="v">{{upText}}</text>
+        </view>
+    </view>
+
+    <view class="foot-tip">
+        <text class="hint">连不上时：手机先连上 {{host}} 对应的网络，再点上方输入框确认地址。</text>
+    </view>
+</view>

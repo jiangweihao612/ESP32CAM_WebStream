@@ -1,0 +1,99 @@
+<view class="page">
+    <view class="offline" wx:if="{{!online}}">
+        <text class="offline-text">未连接到设备，设置可能不生效。请先到「监控」页确认设备地址。</text>
+        <text class="offline-link" bindtap="gotoMonitor">去连接</text>
+    </view>
+
+    <view class="card">
+        <text class="card-title">分辨率</text>
+        <picker mode="selector" range="{{fsLabels}}" value="{{fsIndex}}" bindchange="onFsChange" disabled="{{recOn}}">
+            <view class="select {{recOn ? 'disabled' : ''}}">
+                <text class="select-value">{{fsLabel}}</text>
+                <text class="select-arrow">›</text>
+            </view>
+        </picker>
+        <text class="hint">分辨率越高画面越细腻，但帧率会降、录屏体积会涨。长录建议 VGA。</text>
+        <text class="hint" wx:if="{{recOn}}">录制中不能改分辨率。</text>
+    </view>
+
+    <view class="card">
+        <view class="row">
+            <text class="card-title inline">画质</text>
+            <text class="slider-value">{{qualityText}}</text>
+        </view>
+        <slider
+            class="slider"
+            min="4"
+            max="63"
+            value="{{quality}}"
+            activeColor="#2f6bff"
+            backgroundColor="#e9edf4"
+            block-size="20"
+            bindchanging="onQualityChanging"
+            bindchange="onQualityChange"
+        />
+        <text class="hint">4 最清晰、单帧最大；63 最省带宽。默认 12。</text>
+    </view>
+
+    <view class="card">
+        <view class="row">
+            <text class="card-title inline">亮度</text>
+            <text class="slider-value">{{brightness}}</text>
+        </view>
+        <slider
+            class="slider"
+            min="-2"
+            max="2"
+            value="{{brightness}}"
+            activeColor="#2f6bff"
+            backgroundColor="#e9edf4"
+            block-size="20"
+            bindchanging="onBrightChanging"
+            bindchange="onBrightChange"
+        />
+
+        <view class="row mt">
+            <text class="card-title inline">对比度</text>
+            <text class="slider-value">{{contrast}}</text>
+        </view>
+        <slider
+            class="slider"
+            min="-2"
+            max="2"
+            value="{{contrast}}"
+            activeColor="#2f6bff"
+            backgroundColor="#e9edf4"
+            block-size="20"
+            bindchanging="onContrastChanging"
+            bindchange="onContrastChange"
+        />
+        <text class="hint">范围 -2 ~ 2，0 为默认。</text>
+    </view>
+
+    <view class="card">
+        <text class="card-title">方向与补光</text>
+        <view class="kv">
+            <view class="kv-left">
+                <text class="k">水平镜像</text>
+                <text class="k-sub">自拍视角左右翻转</text>
+            </view>
+            <switch checked="{{hmirror}}" color="#2f6bff" bindchange="onMirror" />
+        </view>
+        <view class="kv">
+            <view class="kv-left">
+                <text class="k">垂直翻转</text>
+                <text class="k-sub">摄像头装反时使用</text>
+            </view>
+            <switch checked="{{vflip}}" color="#2f6bff" bindchange="onVflip" />
+        </view>
+        <view class="kv">
+            <view class="kv-left">
+                <text class="k">补光灯</text>
+                <text class="k-sub">GPIO4 高亮白光 LED</text>
+            </view>
+            <switch checked="{{flash}}" color="#2f6bff" bindchange="onFlash" />
+        </view>
+    </view>
+
+    <button class="reset" bindtap="resetAll">恢复默认设置</button>
+</view>

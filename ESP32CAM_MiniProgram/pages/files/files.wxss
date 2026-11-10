@@ -1,0 +1,261 @@
+.page {
+    padding: 20rpx 0 60rpx;
+}
+
+/* ---------- 路径导航 ---------- */
+.crumbs {
+    white-space: nowrap;
+    margin: 0 24rpx 16rpx;
+}
+
+.crumb-list {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 16rpx;
+    padding: 18rpx 24rpx;
+}
+
+.crumb {
+    display: inline-flex;
+    align-items: center;
+}
+
+.crumb-text {
+    font-size: 26rpx;
+    color: #8a9099;
+}
+
+.crumb-text.cur {
+    color: #1f2329;
+    font-weight: 600;
+}
+
+.crumb-sep {
+    color: #cfd4dc;
+    font-size: 24rpx;
+    margin: 0 12rpx;
+}
+
+/* ---------- 容量条 ---------- */
+.storage {
+    margin: 0 24rpx 20rpx;
+    background: #ffffff;
+    border-radius: 16rpx;
+    padding: 20rpx 24rpx;
+}
+
+.storage-bar {
+    height: 10rpx;
+    border-radius: 6rpx;
+    background: #eef1f6;
+    overflow: hidden;
+}
+
+.storage-fill {
+    height: 10rpx;
+    border-radius: 6rpx;
+    background: linear-gradient(90deg, #2f6bff, #5b8bff);
+}
+
+.storage-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14rpx;
+}
+
+.storage-text {
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.storage-pct {
+    font-size: 22rpx;
+    color: #2f6bff;
+}
+
+/* ---------- 列表 ---------- */
+.list {
+    margin: 0 24rpx 20rpx;
+    background: #ffffff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    min-height: 200rpx;
+}
+
+.frow {
+    display: flex;
+    align-items: center;
+    padding: 22rpx 24rpx;
+    border-bottom: 1rpx solid #f4f6f9;
+}
+
+.frow:last-child {
+    border-bottom: none;
+}
+
+.frow-hover {
+    background: #f7f9fc;
+}
+
+.fic {
+    width: 76rpx;
+    height: 76rpx;
+    border-radius: 16rpx;
+    background: #eef3ff;
+    color: #2f6bff;
+    font-size: 20rpx;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+
+.fic.dir {
+    background: #fff3e0;
+    color: #e08b00;
+}
+
+.fmeta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.fname {
+    font-size: 28rpx;
+    color: #1f2329;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fsub {
+    font-size: 22rpx;
+    color: #9aa1ac;
+    margin-top: 6rpx;
+}
+
+.farrow {
+    font-size: 30rpx;
+    color: #c3c9d2;
+    margin-left: 12rpx;
+}
+
+/* ---------- 状态 ---------- */
+.state {
+    padding: 70rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.state-title {
+    font-size: 28rpx;
+    color: #4a515c;
+}
+
+.state-sub {
+    font-size: 24rpx;
+    color: #9aa1ac;
+    margin-top: 10rpx;
+}
+
+.spinner-dark {
+    width: 40rpx;
+    height: 40rpx;
+    border: 4rpx solid #eef1f6;
+    border-top-color: #2f6bff;
+    border-radius: 50%;
+    margin-bottom: 16rpx;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- 操作区 ---------- */
+.ops {
+    display: flex;
+    margin: 0 24rpx 16rpx;
+}
+
+.op {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 16rpx;
+    height: 84rpx;
+    margin-right: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2rpx 12rpx rgba(31, 35, 41, 0.04);
+}
+
+.op:last-child {
+    margin-right: 0;
+}
+
+.op-hover {
+    background: #f7f9fc;
+}
+
+.op-title {
+    font-size: 26rpx;
+    color: #1f2329;
+}
+
+.wipe {
+    margin: 0 24rpx 20rpx;
+    background: #ffffff;
+    border-radius: 16rpx;
+    height: 84rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2rpx 12rpx rgba(31, 35, 41, 0.04);
+}
+
+.wipe-text {
+    font-size: 26rpx;
+    color: #ff4d4f;
+}
+
+.foot-hint {
+    display: block;
+    padding: 0 32rpx;
+    font-size: 22rpx;
+    color: #9aa1ac;
+    line-height: 1.7;
+}
+
+/* ---------- 上传进度 ---------- */
+.upwrap {
+    margin: 0 24rpx 20rpx;
+}
+
+.upbar {
+    height: 8rpx;
+    border-radius: 4rpx;
+    background: #eef1f6;
+    overflow: hidden;
+}
+
+.upfill {
+    height: 8rpx;
+    background: #2f6bff;
+}
+
+.up-text {
+    display: block;
+    font-size: 22rpx;
+    color: #8a9099;
+    margin-top: 8rpx;
+}

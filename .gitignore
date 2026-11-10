@@ -1,0 +1,29 @@
+# ---------------- 本机私有凭据, 绝对不能提交 ----------------
+secrets.h
+project.config.json
+project.private.config.json
+
+# ---------------- 工作区数据 / 内部标记 ----------------
+.workbuddy/
+.wbapp_*.genie
+
+# ---------------- Arduino 构建产物 ----------------
+build/
+*.bin
+*.elf
+*.map
+*.hex
+*.dSYM/
+
+# ---------------- 系统 / 编辑器 ----------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---------------- 日志 / 临时文件 ----------------
+*.log
+*.tmp

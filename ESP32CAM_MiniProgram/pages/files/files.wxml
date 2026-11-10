@@ -1,0 +1,77 @@
+<view class="page">
+    <scroll-view class="crumbs" scroll-x="true" scroll-with-animation="true">
+        <view class="crumb-list">
+            <block wx:for="{{crumbs}}" wx:key="path">
+                <view class="crumb" data-path="{{item.path}}" bindtap="gotoCrumb">
+                    <text class="crumb-text {{index === crumbs.length - 1 ? 'cur' : ''}}">{{item.name}}</text>
+                </view>
+                <text class="crumb-sep" wx:if="{{index !== crumbs.length - 1}}">/</text>
+            </block>
+        </view>
+    </scroll-view>
+
+    <view class="storage">
+        <view class="storage-bar">
+            <view class="storage-fill" style="width: {{percent}}%"></view>
+        </view>
+        <view class="storage-row">
+            <text class="storage-text">已用 {{usedText}} / {{totalText}}</text>
+            <text class="storage-pct">{{percent}}%</text>
+        </view>
+    </view>
+
+    <view class="list">
+        <view class="state" wx:if="{{loading}}">
+            <view class="spinner-dark"></view>
+            <text class="state-sub">正在读取 SD 卡…</text>
+        </view>
+
+        <view class="state" wx:elif="{{empty}}">
+            <text class="state-title">这里还没有文件</text>
+            <text class="state-sub">录屏或抓拍后会出现在这里</text>
+        </view>
+
+        <block wx:else>
+            <view
+                class="frow"
+                wx:for="{{items}}"
+                wx:key="n"
+                data-index="{{index}}"
+                bindtap="onItemTap"
+                hover-class="frow-hover"
+            >
+                <view class="fic {{item.d ? 'dir' : ''}}">{{item.tag}}</view>
+                <view class="fmeta">
+                    <text class="fname">{{item.n}}</text>
+                    <text class="fsub">{{item.sub}}</text>
+                </view>
+                <text class="farrow">{{item.d ? '›' : '⋯'}}</text>
+            </view>
+        </block>
+    </view>
+
+    <view class="upwrap" wx:if="{{uploadPct >= 0}}">
+        <view class="upbar">
+            <view class="upfill" style="width: {{uploadPct}}%"></view>
+        </view>
+        <text class="up-text">上传中 {{uploadPct}}%</text>
+    </view>
+
+    <view class="ops">
+        <view class="op" bindtap="upload" hover-class="op-hover">
+            <text class="op-title">上传文件</text>
+        </view>
+        <view class="op" bindtap="makeDir" hover-class="op-hover">
+            <text class="op-title">新建文件夹</text>
+        </view>
+        <view class="op" bindtap="refresh" hover-class="op-hover">
+            <text class="op-title">刷新</text>
+        </view>
+    </view>
+
+    <view class="wipe" bindtap="wipeAll">
+        <text class="wipe-text">清空 SD 卡</text>
+    </view>
+
+    <text class="foot-hint">点击文件可选择下载、重命名或删除；AVI 录像会转发到聊天后保存。</text>
+</view>

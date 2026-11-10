@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/control/control",
+    "pages/files/files"
+  ],
+  "window": {
+    "navigationBarTitleText": "ESP32-CAM",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f2f4f7",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8a9099",
+    "selectedColor": "#2f6bff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "监控",
+        "iconPath": "images/monitor.png",
+        "selectedIconPath": "images/monitor-on.png"
+      },
+      {
+        "pagePath": "pages/control/control",
+        "text": "调节",
+        "iconPath": "images/control.png",
+        "selectedIconPath": "images/control-on.png"
+      },
+      {
+        "pagePath": "pages/files/files",
+        "text": "文件",
+        "iconPath": "images/files.png",
+        "selectedIconPath": "images/files-on.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
